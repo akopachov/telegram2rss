@@ -3,6 +3,7 @@ import type { AnyNode } from 'domhandler';
 import { ElementType } from 'htmlparser2';
 
 export function innerTextEx(node: AnyNode | AnyNode[], separator: string): string {
+  if (!node) return '';
   if (Array.isArray(node))
     return node
       .map(n => innerTextEx(n, separator))
@@ -16,6 +17,7 @@ export function innerTextEx(node: AnyNode | AnyNode[], separator: string): strin
 }
 
 export function innerTextUntil(node: AnyNode | AnyNode[], stopTagName: string): string {
+  if (!node) return '';
   if (Array.isArray(node)) {
     const parts = [];
     for (const n of node) {
